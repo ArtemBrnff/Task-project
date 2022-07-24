@@ -4,7 +4,6 @@ import { useStyles } from './styles';
 import { useDispatch } from 'react-redux';
 import { GetFiltredData, studentsFetchData } from '../../../Redux/Action/index'
 import TableCont from './Table/index'
-import DenseTable from './Test'
 
 const Students = () => {
     const classes = useStyles()
@@ -40,7 +39,6 @@ const Students = () => {
                 <Button onClick={() => dispatch(studentsFetchData(page, size))}>EXPORT CSV</Button>
             </Box>
             <TableCont />
-            {/* <DenseTable/> */}
         </Container >
     )
 }

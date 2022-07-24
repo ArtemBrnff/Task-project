@@ -12,7 +12,6 @@ const TableCont = () => {
     const [page, setPage] = useState(1)
     const [size, setSize] = useState(5)
     const [sortDir, setSortDir] = useState(1)
-    // const keys = ['Name', 'ID', 'Class', 'AV.Score%', 'AV.Speed', 'Parents']
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -46,10 +45,7 @@ const TableCont = () => {
     return (
         <Container maxWidth={false} className={classes.table_cont}>
             <TableContainer className={classes.table_container}>
-                <TableRow className={classes.tableRow1} >
-                    {/* {data && keys.map((item, i) => <TableCell key={i} style={{ border: 'none', margin: '0 55px' }}>
-                        <button style={{ border: 'none', backgroundColor: '#fff', cursor: 'pointer' }} onClick={handleOnClick}>{item}</button>
-                    </TableCell>)} */}
+                {data && <TableRow className={classes.tableRow1} >
                     <TableCell className={classes.tableCell1}>
                         <button className={classes.tableCell_button} onClick={() => handleOnClick('name')}>Name</button>
                     </TableCell>
@@ -68,7 +64,7 @@ const TableCont = () => {
                     <TableCell className={classes.tableCell1}>
                         <button className={classes.tableCell_button}>Parents</button>
                     </TableCell>
-                </TableRow>
+                </TableRow>}
                 {data && data.map(({ class: Class, name, id, score, speed, parents, tests }) =>
                     <div className={classes.accordion_cont} key={id}>
                         <Accordion className={classes.accordion}>
@@ -154,7 +150,7 @@ const TableCont = () => {
                     </div>
                 )}
             </TableContainer>
-            <Container className={classes.paginationContainer}>
+            {data && <Container className={classes.paginationContainer}>
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 20]}
                     component="div"
@@ -164,8 +160,7 @@ const TableCont = () => {
                     rowsPerPage={size}
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
-            </Container>
-
+            </Container>}
         </Container>
     )
 }
